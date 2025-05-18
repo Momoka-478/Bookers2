@@ -1,0 +1,23 @@
+<h1>User info</h1>
+<div>
+  <%= image_tag book.user.get_profile_image(100,100) %>
+  <%= @book.user.name %>
+  <p>name <%= @book.user.name %></p>
+  <p>introduction <%= @book.user.introduction %></p>
+</div>
+
+<h1>Book detail</h1>
+<div>
+  <div>
+    <%= image_tag book.user.get_profile_image(100,100) %>
+    <%= @book.user.name %>
+  </div>
+  <%= @book.title %>
+  <%= @book.body %>
+  <% if @book.user == current_user %>
+    <%= link_to "Edit", book_path(@book), method: :edit %>
+  <% end %>
+  <% if @book.user == current_user %>
+    <%= link_to "Destroy", book_path(@book), method: :delete %>
+  <% end %>
+</div>
