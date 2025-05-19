@@ -13,7 +13,9 @@
 
   <body>
     <header>
-      <% if user_signed_in? %>
+      <nav>
+        <a href="/"><strong>Bookers</strong></a>
+        <ul><% if user_signed_in? %>
         <li>
           <%= link_to "New", new_book_path %>
         </li>
@@ -23,14 +25,16 @@
         <li>
           <%= link_to "Log out", destroy_user_session_path, method: :delete %>
         </li>
-      <% else %>
+        <% else %>
         <li>
           <%= link_to "Sign up", new_user_registration_path %>
         </li>
         <li>
           <%= link_to "Log in", new_user_session_path %>
         </li>
-      <% end %>
+        <% end %>
+        </ul>
+      </nav>
     </header>
     <%= yield %>
   </body>
