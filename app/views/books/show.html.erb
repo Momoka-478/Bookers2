@@ -1,6 +1,6 @@
 <h1>User info</h1>
 <div>
-  <%= image_tag book.user.get_profile_image(100,100) %>
+  <%= image_tag @book.user.get_profile_image(100,100) %>
   <%= @book.user.name %>
   <p>name <%= @book.user.name %></p>
   <p>introduction <%= @book.user.introduction %></p>
@@ -9,7 +9,7 @@
 <h1>Book detail</h1>
 <div>
   <div>
-    <%= image_tag book.user.get_profile_image(100,100) %>
+    <%= image_tag @book.user.get_profile_image(100,100) %>
     <%= @book.user.name %>
   </div>
   <%= @book.title %>

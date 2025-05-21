@@ -7,10 +7,10 @@
       <p>about various books!</p>
       <div class="btn-wrapper col-10 mx-auto">
         <div class="row">
-          <a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="/users/sign_in">Log in</a>
+          <%= link_to 'Log in', new_user_session_path, class: "btn-info btn-sm btn-block mb-3 log-in text-center" %>
         </div>
-        <div>
-          <a class="btn btn-success btn-sm btn-block sign-up" href="/users/sign_up">Sign Up</a>
+        <div class="row">
+          <%= link_to 'Sign up', new_user_registration_path, class: "btn-success btn-sm btn-block sign-up text-center" %>
         </div>
       </div>
     </div>
