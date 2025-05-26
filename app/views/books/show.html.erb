@@ -2,19 +2,17 @@
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
-      <% @books.each do |book| %>
-      <%= image_tag book.user.get_profile_image(100,100) %>
+      <%= image_tag @book.user.get_profile_image(100,100) %>
       <table class="table">
         <tr>
           <th>name</th>
-          <th><%= book.user.name %></th>
+          <th><%= @book.user.name %></th>
         </tr>
         <tr>
           <th>introduction</th>
           <th></th>
         </tr>
       </table>
-      <% end %>
       <div class="row">
         <%= link_to edit_user_path(@user.id), class: 'btn btn-outline-secondary btn-block' do %>
           <i class="fa-solid fa-user-gear"></i>
@@ -34,26 +32,22 @@
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
-        <% @books.each do |book| %>
-          <tbody>
-            <tr>
-            <% @users.each do |user| %>
-              <td>
-                <%= link_to user_path(user.id) do %>
-                  <%= image_tag book.user.get_profile_image(100,100) %><br>
-                  <%= book.user.name %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to book_path(book.id) do %>
-                  <%= book.title %>
-                <% end %>
-              </td>
-              <td><%= book.body %></td>
-            <% end %>
-            </tr>
-          </tbody>
-        <% end %>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_path(@user.id) do %>
+                <%= image_tag @user.get_profile_image(100,100) %><br>
+                <%= @user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to book_path(@book.id) do %>
+                <%= @book.title %>
+              <% end %>
+            </td>
+            <td><%= @book.body %></td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
