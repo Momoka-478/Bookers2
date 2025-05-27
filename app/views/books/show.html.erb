@@ -1,3 +1,7 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
@@ -42,12 +46,12 @@
             <td><%= @book_id.body %></td>
             <td>
               <% if @user == current_user %>
-                <%= link_to "Edit", edit_book_path(@book_id) %>
+                <%= link_to "Edit", edit_book_path(@book_id), class: "btn btn-sm btn-success" %>
               <% end %>
             </td>
             <td>
               <% if @user == current_user %>
-                <%= link_to "Destroy", book_path(@book_id), method: :delete %>
+                <%= link_to "Destroy", book_path(@book_id), method: :delete, class: "btn btn-sm btn-danger" %>
               <% end %>
             </td>
           </tr>
