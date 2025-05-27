@@ -2,15 +2,15 @@
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
-      <%= image_tag @book.user.get_profile_image(100,100) %>
+      <%= image_tag @user.get_profile_image(100,100) %>
       <table class="table">
         <tr>
           <th>name</th>
-          <th><%= @book.user.name %></th>
+          <th><%= @user.name %></th>
         </tr>
         <tr>
           <th>introduction</th>
-          <th></th>
+          <th><%= @user.introduction %></th>
         </tr>
       </table>
       <div class="row">
@@ -19,14 +19,8 @@
         <% end %>
       </div>
 
-      <h2 class="mt-3">New book</h2>
-      <%= form_with model: @book do |f| %>
-        <p>Title</p>
-        <%= f.text_field :title %>
-        <p>Opinion</p>
-        <%= f.text_area :body %>
-        <%= f.submit 'Create Book', class: 'btn btn-success' %>
-      <% end %>
+      <%= render 'list' %>
+
     </div>
 
     <div class="col-md-8 offset-md-1">
@@ -41,11 +35,21 @@
               <% end %>
             </td>
             <td>
-              <%= link_to book_path(@book.id) do %>
-                <%= @book.title %>
+              <%= link_to book_path(@book_id.id) do %>
+                <%= @book_id.title %>
               <% end %>
             </td>
-            <td><%= @book.body %></td>
+            <td><%= @book_id.body %></td>
+            <td>
+              <% if @user == current_user %>
+                <%= link_to "Edit", edit_book_path(@book_id) %>
+              <% end %>
+            </td>
+            <td>
+              <% if @user == current_user %>
+                <%= link_to "Destroy", book_path(@book_id), method: :delete %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
